@@ -1,0 +1,26 @@
+{
+  "name": "toots-in-genai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@langchain/core": "^1.2.5",
+    "@langchain/google-genai": "^2.2.0",
+    "@langchain/langgraph": "^1.4.9",
+    "@langchain/mistralai": "^1.2.0",
+    "@langchain/openai": "^1.5.6",
+    "@mistralai/mistralai": "^2.6.1",
+    "dotenv": "^17.4.2",
+    "langchain": "^1.5.5",
+    "nodemon": "^3.1.14",
+    "zod": "^4.4.3"
+  }
+}
