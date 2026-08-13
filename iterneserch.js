@@ -29,12 +29,12 @@ export async function internetSearch(inputObject) {
     });
 
     const data = await response.json();
-
+ console.log("internet tool  able to serch the user query ")
 
     if (!data.results) {
       return "No results found or invalid API response.";
     }
- console.log(data.results)
+
   
     return JSON.stringify(data.results.map(r => ({ title: r.title, content: r.content })));
   } catch (error) {

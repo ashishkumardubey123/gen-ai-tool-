@@ -29,17 +29,18 @@ const Internet_Search_Tool = tool(
       })
      }
 );
+console.log("MISTRAL KEY:", process.env.MISTRAL_API_KEY);
 
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
 });
 
-const model = new ChatGoogleGenerativeAI({
-model: "gemini-3.5-flash",
-  apiKey: process.env.GOOGLE_API_KEY,
+const model = new ChatMistralAI({
+  model: "mistral-small-latest",
+  apiKey: process.env.MISTRAL_API_KEY,
 
-  temperature: 0.7,
+
 });
 
  const agent = createAgent({
