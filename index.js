@@ -5,6 +5,7 @@ import readline from "readline/promises";
 import multiplication , {internetSearch} from "./iterneserch.js"
 import { HumanMessage, createAgent, tool } from "langchain";
 import { ChatMistralAI } from "@langchain/mistralai";
+import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 dotenv.config();
 
 const multiplicationtTool = tool(
@@ -34,19 +35,20 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-const model = new ChatMistralAI({
-  model: "mistral-large-latest",
-    apiKey: process.env.MISTRAL_API_KEY,
+const model = new ChatGoogleGenerativeAI({
+model: "gemini-3.5-flash",
+  apiKey: process.env.GOOGLE_API_KEY,
+
   temperature: 0.7,
 });
 
  const agent = createAgent({
   model,
-  tools:[Internet_Search_Tool]
+  tools:[Internet_Search_Tool, multiplicationtTool]
  })
 
 
-const messages = [];
+let  messages = [];
 
 console.log(messages)
 
@@ -65,8 +67,11 @@ while (true) {
 
   const response = await agent.invoke({messages});
 
-  messages.push(response);
-  const lastMessage = response.messages[response.messages.length - 1];
+      messages = response.messages;
+
+  const lastMessage = messages[messages.length - 1];
+
+
 console.log(`\x1b[34m[AI]\x1b[0m ${lastMessage.content}`);}
 
 rl.close();
